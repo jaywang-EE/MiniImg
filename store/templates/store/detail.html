@@ -1,0 +1,23 @@
+{% extends "base_bootstrap.html" %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a href="{% url 'store:all' %}"><h1 class="main-title"><span class="bold">Mini</span>Img</h1></a>
+</nav>
+<section id = 'main'>
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="image-container">
+      <div class="col-md-12">
+        <h1 class="image-code">Your image code: {{ pic.code }}</h1>
+      </div>
+      {% if pic.content_type %}
+      <div class="image-sub-container">
+        <img style="max-height: 60vh; max-width: 90vh;" src="{% url 'store:pic_picture' pic.id %}" alt="Responsive image" class="img-thumbnail">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
+
