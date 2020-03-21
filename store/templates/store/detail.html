@@ -1,4 +1,12 @@
 {% extends "base_bootstrap.html" %}
+
+{% block opengraph %}
+  <meta property="og:title" content="{{ pic.code }}" />
+  <meta property="og:type" content="image" />
+  <meta property="og:url" content="{{ request.build_absolute_uri  }}" />
+  <meta property="og:image" content= "{% url 'store:pic_picture' pic.id %}"/>
+{% endblock %}
+
 {% block content %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a href="{% url 'store:all' %}"><h1 class="main-title"><span class="bold">Mini</span>Img</h1></a>

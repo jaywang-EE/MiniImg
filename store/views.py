@@ -14,27 +14,6 @@ from store.forms import CreateForm
 import short_url# I found it's useful
 #print(short_url.encode_url(2))
 
-"""
-def pk2code(pk):
-    code = "p"
-    while(1):
-        ch=pk%62
-        print(pk)
-
-        if (ch<10):
-            code += chr(ch+ord('0'))
-        elif (ch<36):
-            ch -= 10
-            code += chr(ch+ord('a'))
-        else:
-            ch -= 36
-            code += chr(ch+ord('A'))
-
-        pk//=62
-        if (pk==0): break
-    return code
-"""
-
 class PicListView(ListView):
     model = Pic
     template_name = "store/list.html"
@@ -47,9 +26,10 @@ class PicListView(ListView):
                 return redirect(reverse_lazy('store:pic_detail', kwargs={'code': search}))
         return render(request, self.template_name)
 
-class PicDetailView(TemplateView):
+class PicDetailView(DetailView):
     model = Pic
     template_name = "store/detail.html"
+
     def get(self, request, code=None):
         print(Pic.objects.get(code=code))
         print(self.template_name)
